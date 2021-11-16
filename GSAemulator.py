@@ -21,7 +21,8 @@ class GSAemulator:
         self.protoc_ver = get_config(config)
         self.upd_data = get_config(config)
         self.T = int(get_config(config), 2)
-        self.gain = int(get_config(config), 2)
+        self.gainCH1 = int(get_config(config), 2)
+        self.gainCH2 = int(get_config(config), 2)
         config.close()
 
     def refresh_config(self):  # обновляем данные в файле по параметрам переданного элемента
@@ -32,5 +33,6 @@ class GSAemulator:
         config.write(f'4 protoc_ver : {self.protoc_ver}\n')
         config.write(f'5 upd_data : {self.upd_data}\n')
         config.write(f'6 T(5bit) : {bin(self.T)}\n')
-        config.write(f'7 gain(8bit) : {bin(self.gain)}\n')
+        config.write(f'7 gainCH1(8bit) : {bin(self.gainCH1)}\n')
+        config.write(f'8 gainCH2(8bit) : {bin(self.gainCH2)}\n')
         config.close()
