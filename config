@@ -3,5 +3,5 @@
 3 protoc_name : RadistASCII
 4 protoc_ver : v0
 5 upd_data : 16.10.2021
-6 T(5bit) : 0b10111111
+6 T(5bit) : 0b11000000
 7 gain(8bit) : 0b101

@@ -1,6 +1,15 @@
 # parameters of the GSA
+import datetime
+import sys
+
+
 def get_config(fileobj):
     return (fileobj.readline().split(' : ')[1][:-1])  # построчно берем конфигурации из файла
+
+
+def sys_print(*data):
+    sys.stdout.write(f'[{datetime.datetime.now().strftime("%H:%M:%S")}] {"".join(map(str, data))}')
+    return 'printed'
 
 
 class GSAemulator:
