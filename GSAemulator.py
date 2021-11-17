@@ -36,3 +36,4 @@ class GSAemulator:
         config.write(f'7 gainCH1(8bit) : {bin(self.gainCH1)}\n')
         config.write(f'8 gainCH2(8bit) : {bin(self.gainCH2)}\n')
         config.close()
+
