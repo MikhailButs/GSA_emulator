@@ -48,11 +48,11 @@ def answer(task, gsa):
             gsa.refresh_config()
             return '*Ok\n'
         else:
-            return 'ERROR Unknown channel'
+            return '*ERROR Unknown channel\n'
 
     else:
         sys_print('Answering to *', task_txt, '\\n\n')
-        return 'ERROR unknown command'
+        return '*ERROR unknown command\n'
 
 
 if __name__ == '__main__':
