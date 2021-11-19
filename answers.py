@@ -1,11 +1,16 @@
-# answer function
+# answer function in GSAemulatorclass
 # выполняет действия и возвращает ответ для клиента
+import datetime
+import sys
 import time  # задержка на калибровку
 
-from GSAemulator import sys_print
+
+def sys_print(*data):
+    sys.stdout.write(f'[{datetime.datetime.now().strftime("%H:%M:%S")}] {"".join(map(str, data))}')
+    return 'printed'
 
 
-def answer(task, gsa):
+def answer(gsa, task):
     task = task[1:-1].split(' ')
     task_txt = ' '.join(map(str, task))
     type = task[0]
@@ -58,7 +63,7 @@ def answer(task, gsa):
 if __name__ == '__main__':
     import GSAemulator
 
-    gsa = GSAemulator.GSAemulator()
+    gsa = GSAemulator.GSAemulator('config', 'protocol')
     print(answer(('*IDN?\n'), gsa))
     print(answer(('*CONF 3\n'), gsa))
     print(answer(('*CONF?\n'), gsa))

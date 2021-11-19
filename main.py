@@ -3,12 +3,12 @@ import socket
 
 import GSAemulator
 import answers
-from GSAemulator import sys_print
+from answers import sys_print
 
 if __name__ == '__main__':
     serv_addr = ('127.0.0.1', 10001)  # адрес входа
 
-    gsa = GSAemulator.GSAemulator('config')
+    gsa = GSAemulator.GSAemulator('config', 'protocol')
 
     sock = socket.socket()
     sock.bind(serv_addr)
