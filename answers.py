@@ -11,6 +11,7 @@ def sys_print(*data):
 
 
 def answer(gsa, task):
+    gsa.refresh_config()
     task = task[1:-1].split(' ')
     task_txt = ' '.join(map(str, task))
     type = task[0]
@@ -28,7 +29,7 @@ def answer(gsa, task):
 
     if type == 'CONF':  # установка конфигурации времязадающей цепочки
         gsa.T = int(task[1])
-        gsa.refresh_config()
+        # gsa.refresh_config()
         # sys_print('Answering to *', task_txt, '\\n\n')
         # return '*Ok\n'
 
@@ -48,12 +49,12 @@ def answer(gsa, task):
         if task[1] == 'A':
             # sys_print('Answering to *', task_txt, '\\n\n')
             gsa.gainCH1 = int(task[2])
-            gsa.refresh_config()
+            # gsa.refresh_config()
             # return '*Ok\n'
         elif task[1] == 'B':
             # sys_print('Answering to *', task_txt, '\\n\n')
             gsa.gainCH2 = int(task[2])
-            gsa.refresh_config()
+            # gsa.refresh_config()
             # return '*Ok\n'
         # else:
         # return '*ERROR Unknown channel\n'
@@ -62,12 +63,17 @@ def answer(gsa, task):
     # sys_print('Answering to *', task_txt, '\\n\n')
     #    return '*ERROR unknown command\n'
 
+    gsa.refresh_config()  # сохраняемся
+
     # формируем отвер по протоколу
     answer_prot = gsa.prot[type]
     answer_prot = answer_prot.split(',')
     answer_gsa = ''
     for i in answer_prot:
-        answer_gsa += gsa.conf_dict[i] + ' '
+        if gsa.conf_dict.get(i) == None:
+            answer_gsa += gsa.prot[type] + ' '  # если поля нет в конфигурации, значит это "дежурный" отет (типа Ок)
+        else:
+            answer_gsa += gsa.conf_dict[i] + ' '  # если поле есть в конфигурации, возвращаем значение
     answer_gsa = answer_gsa[:-1]
     return f'*{answer_gsa}\n'
 

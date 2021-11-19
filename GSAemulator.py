@@ -51,7 +51,7 @@ class GSAemulator:
         configfile.write(f'T(5bit) {self.T}\n')
         configfile.write(f'gainCH1(8bit) {self.gainCH1}\n')
         configfile.write(f'gainCH2(8bit) {self.gainCH2}\n')
-        configfile.write(f'Ok {self.conf_dict["Ok"]}\n')
+        # configfile.write(f'Ok {self.conf_dict["Ok"]}\n')
         configfile.close()
 
     def answer(self, data):
