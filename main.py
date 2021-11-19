@@ -25,7 +25,7 @@ if __name__ == '__main__':
                 sys_print('Received ', data.replace("\n", "\\n"), '\n')
                 if data:
                     # print('Answering\n')
-                    answer = answers.answer(data, gsa)  # выполнение запроса
+                    answer = answers.answer(gsa, data)  # выполнение запроса
                     connection.send(answer.encode('utf-8'))  # отправка ответа
                     sys_print('Answered ', answer.replace('\n', '\\n'), '\n')
                 else:

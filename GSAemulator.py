@@ -21,9 +21,9 @@ class GSAemulator:
         self.protoc_name = conf_dict.setdefault('protoc_name')
         self.protoc_ver = conf_dict.setdefault('protoc_ver')
         self.upd_data = conf_dict.setdefault('upd_data')
-        self.T = int(conf_dict.setdefault('T(5bit', '0'), 2)
-        self.gainCH1 = int(conf_dict.setdefault('gainCH1(8bit)', '0'), 2)
-        self.gainCH2 = int(conf_dict.setdefault('gainCH2(8bit)', '0'), 2)
+        self.T = int(conf_dict.setdefault('T(5bit)', '0'))
+        self.gainCH1 = int(conf_dict.setdefault('gainCH1(8bit)', '0'))
+        self.gainCH2 = int(conf_dict.setdefault('gainCH2(8bit)', '0'))
         self.conf_dict = conf_dict
         configfile.close()
 
@@ -43,15 +43,15 @@ class GSAemulator:
 
     def refresh_config(self):  # обновляем данные в файле конфигурации по параметрам переданного элемента
         configfile = open('config', 'w')
-        configfile.write(f'name : {self.name}\n')
-        configfile.write(f'soft_ver : {self.soft_ver}\n')
-        configfile.write(f'protoc_name : {self.protoc_name}\n')
-        configfile.write(f'protoc_ver : {self.protoc_ver}\n')
-        configfile.write(f'upd_data : {self.upd_data}\n')
-        configfile.write(f'T(5bit) : {self.T}\n')
-        configfile.write(f'gainCH1(8bit) : {self.gainCH1}\n')
-        configfile.write(f'gainCH2(8bit) : {self.gainCH2}\n')
-        configfile.write('Ok Ok\n')
+        configfile.write(f'name {self.name}\n')
+        configfile.write(f'soft_ver {self.soft_ver}\n')
+        configfile.write(f'protoc_name {self.protoc_name}\n')
+        configfile.write(f'protoc_ver {self.protoc_ver}\n')
+        configfile.write(f'upd_data {self.upd_data}\n')
+        configfile.write(f'T(5bit) {self.T}\n')
+        configfile.write(f'gainCH1(8bit) {self.gainCH1}\n')
+        configfile.write(f'gainCH2(8bit) {self.gainCH2}\n')
+        configfile.write(f'Ok {self.conf_dict["Ok"]}\n')
         configfile.close()
 
     def answer(self, data):
@@ -59,3 +59,4 @@ class GSAemulator:
 
 if __name__ == '__main__':
     gsa = GSAemulator('config', 'protocol')
+    print(gsa.conf_dict)

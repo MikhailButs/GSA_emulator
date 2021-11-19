@@ -1,5 +1,5 @@
 USER AMP
-IDN? name,protoc_name,protoc_ver,upd_data
+IDN? name,soft_ver,protoc_name,protoc_ver,upd_data
 CONF? T(5bit)
 CONF Ok
 GAIN Ok
