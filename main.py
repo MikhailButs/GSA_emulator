@@ -8,7 +8,7 @@ from GSAemulator import sys_print
 if __name__ == '__main__':
     serv_addr = ('127.0.0.1', 10001)  # адрес входа
 
-    gsa = GSAemulator.GSAemulator()
+    gsa = GSAemulator.GSAemulator('config')
 
     sock = socket.socket()
     sock.bind(serv_addr)

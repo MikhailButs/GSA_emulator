@@ -1,8 +1,8 @@
-1 name : ShapingAmplifierAndGSA
-2 soft_ver : v1
-3 protoc_name : RadistASCII
-4 protoc_ver : v0
-5 upd_data : 16.10.2021
-6 T(5bit) : 0b11
-7 gainCH1(8bit) : 0b100
-8 gainCH2(8bit) : 0b101
+name ShapingAmplifierAndGSA
+soft_ver v1
+protoc_name RadistASCII
+protoc_ver v0
+upd_data 16.10.2021
+T(5bit) 0b11
+gainCH1(8bit) 0b100
+gainCH2(8bit) 0b101
