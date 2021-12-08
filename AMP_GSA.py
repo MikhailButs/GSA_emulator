@@ -10,29 +10,22 @@ class AMP_GSA:
         self.client = Client(address)
 
     def get_name(self):
-        #self.sock.send('*IDN?\n'.encode('utf-8'))
-        #return self.sock.recv(1024).decode('utf-8')[1:-1]
         return self.client.ask('IDN?')
 
     def get_conf(self):
-        self.sock.send('*CONF?\n'.encode('utf-8'))
-        return int(self.sock.recv(1024).decode('utf-8')[1:-1])
+        return self.client.ask('CONF?')
 
     def set_conf(self, conf):
-        self.sock.send(f'*CONF {conf}\n'.encode('utf-8'))
-        return self.sock.recv(1024).decode('utf-8')[1:-1]
+        return self.client.ask(f'CONF {conf}')
 
     def set_gainCH1(self, gainCH1):
-        self.sock.send(f'*GAIN A {gainCH1}\n'.encode('utf-8'))
-        return self.sock.recv(1024).decode('utf-8')[1:-1]
+        return self.client.ask(f'GAIN A {gainCH1}')
 
     def set_gainCH2(self, gainCH2):
-        self.sock.send(f'*GAIN B {gainCH2}\n'.encode('utf-8'))
-        return self.sock.recv(1024).decode('utf-8')[1:-1]
+        return self.client.ask(f'GAIN B {gainCH2}')
 
     def make_call(self, num, amp, impulse, pause):
-        self.sock.send(f'*CAL {num} {amp} {impulse} {pause}\n'.encode('utf-8'))
-        return self.sock.recv(1024).decode('utf-8')[1:-1]
+        return self.client.ask(f'CAL {num} {amp} {impulse} {pause}')
 
 
 class Client:
@@ -44,3 +37,6 @@ class Client:
     def ask(self, quest):
         self.sock.send(f'*{quest}\n'.encode('utf-8'))
         return self.sock.recv(1024).decode('utf-8')[1:-1]
+
+    def __del__(self):
+        self.sock.close()

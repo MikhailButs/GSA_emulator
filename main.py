@@ -8,11 +8,9 @@ import AMP_GSA
 if __name__ == '__main__':
     print('Test of AMP_GSA starts')
     address = ('127.0.0.1', 10001)
-    sock = socket.socket()
-    sock.connect(address)
     print(f'Connected with {address}\n')
 
-    gsa = AMP_GSA.AMP_GSA(sock)
+    gsa = AMP_GSA.AMP_GSA(address)
     print('asked: NAME')
     print('Answered ', gsa.get_name(), '\n')
     time.sleep(5)
@@ -38,5 +36,3 @@ if __name__ == '__main__':
 
     print('close connection')
     time.sleep(10)
-
-    sock.close()
