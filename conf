@@ -1,8 +1,8 @@
 name ShapingAmplifierAndGSA v1, RadistASCII v0, 16.10.2021
-T(5bit) 9
-gainCH1(8bit) 10
-gainCH2(8bit) 11
-num_pulses(16bit) 1
-amp_pulses(16bit) 1
-width_pulses(8bit) 1
-widt_pause(8bit) 1
+T(5bit) 14
+gainCH1(8bit) 151
+gainCH2(8bit) 30
+num_pulses(16bit) 33882
+amp_pulses(16bit) 38877
+width_pulses(8bit) 120
+width_pause(8bit) 142
