@@ -101,11 +101,8 @@ class ExampleApp(QtWidgets.QMainWindow, ui_design.Ui_win):
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
     window = ExampleApp()  # Создаём объект класса ExampleApp
-
-    #window.cml_box.setPlainText('gr')
     window.show()  # Показываем окно
     app.exec_()  # и запускаем приложение
-    window.cml_box.setPlainText('grrhrhrr')
 
 if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем
     main()  # то запускаем функцию main()
