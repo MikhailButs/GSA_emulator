@@ -37,6 +37,9 @@ class GSAemulator:
         configfile.write(f'gainCH2(8bit) {self.gainCH2}\n')
         # configfile.write(f'Ok {self.conf_dict["Ok"]}\n')
         configfile.close()
+        configfile = open('config', 'r')
+        lines = configfile.readlines()
+        self.conf_dict = {i[:i.index(' ')]: i[i.index(' ') + 1:-1] for i in lines}
 
     def answer(self, data):
         return answers.answer(self, data)
