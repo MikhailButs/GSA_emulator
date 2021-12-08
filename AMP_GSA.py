@@ -40,3 +40,7 @@ class Client:
 
     def __del__(self):
         self.sock.close()
+
+def sys_print(*data):
+    sys.stdout.write(f'[{datetime.datetime.now().strftime("%H:%M:%S")}] {"".join(map(str, data))}')
+    return 'printed'
