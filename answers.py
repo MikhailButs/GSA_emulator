@@ -65,7 +65,7 @@ def answer(gsa, task):
 
     gsa.refresh_config()  # сохраняемся
 
-    # формируем отвер по протоколу
+    # формируем ответ по протоколу
     answer_prot = gsa.prot[type]
     answer_prot = answer_prot.split(',')
     answer_gsa = ''
