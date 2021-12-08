@@ -1,7 +1,7 @@
 import sys  # sys нужен для передачи argv в QApplication
 from PyQt5 import QtWidgets
 import ui_design  # Это наш конвертированный файл дизайна
-
+import AMP_GSA
 
 class ExampleApp(QtWidgets.QMainWindow, ui_design.Ui_win):
     def __init__(self):
@@ -9,6 +9,10 @@ class ExampleApp(QtWidgets.QMainWindow, ui_design.Ui_win):
         # и т.д. в файле design.py
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+
+        # блок "usb-eternet"
+        self.amp = None
+        self.ether_con_btn.clicked.connect(self.ether_con)
 
         # блок "постоянная времени"
         self.time_const_slider.valueChanged.connect(self.set_time_const_spin_box)
@@ -36,6 +40,13 @@ class ExampleApp(QtWidgets.QMainWindow, ui_design.Ui_win):
 
         # блок "eternet"
         self.get_name_btn_ether.clicked.connect(self.make_get_name)
+
+    # блок "usb-eterne"
+    def ether_con(self):
+        if len(self.ip_field.text()) & len(self.port_field.text()) != 0:
+            self.cml_box.append('CONNECTION')
+            self.amp = AMP_GSA.AMP_GSA((str(self.ip_field.text()), int(self.port_field.text())))
+
 
     # блок "постоянная времени"
     def set_time_const_spin_box(self):
@@ -92,11 +103,14 @@ class ExampleApp(QtWidgets.QMainWindow, ui_design.Ui_win):
         self.set_pause_slider.setValue(self.set_pause_spin.value())
 
     def make_start_call(self):
-        self.cml_box.append('CALL')
+        if self.amp != None:
+            self.amp.make_call()
 
     # блок "eternet"
     def make_get_name(self):
         self.cml_box.append('CONF?')
+
+    # вывод в cml
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
