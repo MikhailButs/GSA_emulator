@@ -53,8 +53,13 @@ class ExampleApp(QtWidgets.QMainWindow, ui_design.Ui_win):
     # блок "usb-eterne"
     def ether_con(self):
         if len(self.ip_field.text()) & len(self.port_field.text()) != 0:
-            self.ether_client = AMP_GSA.Client((str(self.ip_field.text()), int(self.port_field.text())))
-            self.cml_box.append(time_print(f'CONNECTED TO ({self.ip_field.text()}, {self.port_field.text()})'))
+            try:
+                self.ether_client = AMP_GSA.Client((str(self.ip_field.text()), int(self.port_field.text())))
+                self.cml_box.append(time_print(f'CONNECTED TO ({self.ip_field.text()}, {self.port_field.text()})'))
+            except ConnectionRefusedError:
+                self.ether_client = None
+                self.cml_box.append(time_print(f'CAN\'T CONNECT TO ({self.ip_field.text()}, {self.port_field.text()})'))
+
 
     def make_get_name(self):
         if self.ether_client is not None:

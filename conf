@@ -4,5 +4,5 @@ gainCH1(8bit) 202
 gainCH2(8bit) 60
 num_pulses(16bit) 8693
 amp_pulses(16bit) 20
-width_pulses(8bit) 10
+width_pulses(8bit) 40
 width_pause(8bit) 10
