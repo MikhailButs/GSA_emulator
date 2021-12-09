@@ -60,6 +60,10 @@ class Client:
     def __del__(self):
         self.sock.close()
 
+
+if __name__ == '__main__':
+    client = Client()
+
 '''' 
     def sys_print(*data):
     sys.stdout.write(f'[{datetime.datetime.now().strftime("%H:%M:%S")}] {"".join(map(str, data))}')

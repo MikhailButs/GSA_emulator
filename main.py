@@ -2,11 +2,13 @@
 # Тест команд класса AMP_GSA
 import socket
 import time
-
 import AMP_GSA
+import ui_gsa
 
 if __name__ == '__main__':
-    print('Test of AMP_GSA starts')
+    ui_gsa.main()
+
+    '''print('Test of AMP_GSA starts')
     address = ('127.0.0.1', 10001)
     print(f'Connected with {address}\n')
 
@@ -35,4 +37,4 @@ if __name__ == '__main__':
     print('made ', gsa.make_call(10, 10, 10, 10), '\n')
 
     print('close connection')
-    time.sleep(10)
+    time.sleep(10)'''
