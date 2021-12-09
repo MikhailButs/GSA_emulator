@@ -48,18 +48,15 @@ class AMP_GSA:
 
 
 class Client:
-    def __init__(self, address=('127.0.0.1', 10000)):
+    def __init__(self, address=('127.0.0.1', 10001)):
         self.address = address
         self.sock = socket.socket()
         self.sock.settimeout(10)
         self.sock.connect(address)
 
     def ask(self, quest):
-        try:
-            self.sock.send(f'{quest}'.encode('utf-8'))
-            return self.sock.recv(1024).decode('utf-8')
-        finally:
-            return None
+        self.sock.send(f'{quest}'.encode('utf-8'))
+        return self.sock.recv(1024).decode('utf-8')
 
     def __del__(self):
         self.sock.close()
