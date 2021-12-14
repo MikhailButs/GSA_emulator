@@ -1,0 +1,6 @@
+USER AMP
+IDN? name
+CONF? T(5bit)
+CONF Ok
+GAIN Ok
+CAL Ok
